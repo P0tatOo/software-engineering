@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Netflix Recommendation Service</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+      .movie {
+        border: 1px solid #ccc;
+        margin: 10px;
+        width: 200px;
+        text-align: center;
+      }
+      .movie img {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>NETFLIX 즐길거리 검색 서비스</h1>
+    <div class="container" id="movie-container"></div>
+
+    <script>
+      async function fetchRecommendations() {
+        const response = await fetch("/recommend/id123");
+        const movies = await response.json();
+        const container = document.getElementById("movie-container");
+        container.innerHTML = "";
+
+        movies.forEach((movie) => {
+          const movieDiv = document.createElement("div");
+          movieDiv.className = "movie";
+          movieDiv.innerHTML = `
+                    <img src="path/to/movie/poster/${movie.title}.jpg" alt="${movie.title}">
+                    <h3>${movie.title}</h3>
+                    <p>Rating: ${movie.rating}</p>
+                    <p>${movie.description}</p>
+                `;
+          container.appendChild(movieDiv);
+        });
+      }
+
+      fetchRecommendations();
+    </script>
+  </body>
+</html>
