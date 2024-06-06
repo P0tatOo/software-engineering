@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #141414;
+            color: #ffffff;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #141414;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e50914;
+        }
+        .navbar .menu {
+            display: flex;
+            gap: 20px;
+        }
+        .navbar .menu a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .navbar .search {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+        .navbar .search input[type="text"] {
+            padding: 5px;
+            font-size: 16px;
+            border: none;
+            border-radius: 3px;
+        }
+        .movie-details {
+            padding: 80px 20px 20px 20px;
+        }
+        .movie-details img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            display: block;
+            margin-bottom: 20px;
+        }
+        .movie-details h1 {
+            margin-bottom: 20px;
+            font-size: 36px;
+        }
+        .movie-details p {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #e50914;
+            border: none;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">NETFLIX</div>
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="#">TV Shows</a>
+            <a href="#">Movies</a>
+            <a href="#">Latest</a>
+            <a href="#">My List</a>
+        </div>
+        <div class="search">
+            <input type="text" placeholder="Search">
+        </div>
+    </div>
+    <div class="movie-details">
+        <img src="https://via.placeholder.com/400x600" alt="Movie Poster">
+        <h1>Movie Title</h1>
+        <p> 여기에 줄거리 넣으면 됨 !!! </p>
+        <div class="buttons">
+            <button onclick="alert('You liked this movie!')">좋아요</button>
+            <button onclick="alert('Plot saved!')">줄거리 저장</button>
+        </div>
+    </div>
+</body>
+</html>
