@@ -39,12 +39,32 @@
             margin-left: auto;
             display: flex;
             align-items: center;
+            position: relative;
         }
         .navbar .search input[type="text"] {
-            padding: 5px;
+            padding: 5px 10px;
             font-size: 16px;
-            border: none;
+            border: 1px solid #ccc;
             border-radius: 3px;
+            background-color: #000;
+            color: #fff;
+            padding-left: 30px;
+            width: 200px;
+        }
+        .navbar .search .search-icon {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ccc;
+        }
+        .navbar .search .close-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ccc;
+            cursor: pointer;
         }
         .section {
             padding: 80px 20px 20px 20px;
@@ -64,6 +84,11 @@
             cursor: pointer;
         }
     </style>
+    <script>
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+        }
+    </script>
 </head>
 <body>
     <div class="navbar">
@@ -76,7 +101,9 @@
             <a href="#">My List</a>
         </div>
         <div class="search">
-            <input type="text" placeholder="Search">
+            <input type="text" id="searchInput" placeholder="Search">
+            <span class="search-icon">&#128269;</span>
+            <span class="close-icon" onclick="clearSearch()">&#10006;</span>
         </div>
     </div>
     <div class="section">
@@ -92,3 +119,4 @@
     </div>
 </body>
 </html>
+
