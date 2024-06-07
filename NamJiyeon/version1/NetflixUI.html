@@ -30,13 +30,13 @@
         .navbar .menu {
             display: flex;
             gap: 20px;
+            align-items: center;
         }
         .navbar .menu a {
             color: #ffffff;
             text-decoration: none;
         }
         .navbar .search {
-            margin-left: auto;
             display: flex;
             align-items: center;
             position: relative;
@@ -48,23 +48,17 @@
             border-radius: 3px;
             background-color: #000;
             color: #fff;
-            padding-left: 30px;
             width: 200px;
+            margin-right: 5px;
         }
-        .navbar .search .search-icon {
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #ccc;
-        }
-        .navbar .search .close-icon {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #ccc;
+        .navbar .search button {
+            padding: 5px 10px;
+            font-size: 16px;
+            border: none;
+            background-color: #e50914;
+            color: #fff;
             cursor: pointer;
+            border-radius: 3px;
         }
         .section {
             padding: 80px 20px 20px 20px;
@@ -77,18 +71,21 @@
             display: flex;
             gap: 10px;
         }
-        .carousel img {
+        .carousel button {
             width: 200px;
             height: 300px;
-            object-fit: cover;
+            background-color: #333;
+            color: #fff;
+            font-size: 18px;
+            border: none;
             cursor: pointer;
+            border-radius: 3px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     </style>
-    <script>
-        function clearSearch() {
-            document.getElementById('searchInput').value = '';
-        }
-    </script>
 </head>
 <body>
     <div class="navbar">
@@ -99,24 +96,29 @@
             <a href="#">Movies</a>
             <a href="#">Latest</a>
             <a href="#">My List</a>
-        </div>
-        <div class="search">
-            <input type="text" id="searchInput" placeholder="Search">
-            <span class="search-icon">&#128269;</span>
-            <span class="close-icon" onclick="clearSearch()">&#10006;</span>
+            <div class="search">
+                <input type="text" id="searchInput" placeholder="Search">
+                <button onclick="executeSearch()">Search</button>
+            </div>
         </div>
     </div>
     <div class="section">
         <h2>For you</h2>
         <div class="carousel">
-            <img src="https://via.placeholder.com/200x300" alt="Movie 1" onclick="location.href='movie.html'">
-            <img src="https://via.placeholder.com/200x300" alt="Movie 2" onclick="location.href='movie.html'">
-            <img src="https://via.placeholder.com/200x300" alt="Movie 3" onclick="location.href='movie.html'">
-            <img src="https://via.placeholder.com/200x300" alt="Movie 4" onclick="location.href='movie.html'">
-            <img src="https://via.placeholder.com/200x300" alt="Movie 5" onclick="location.href='movie.html'">
-            <img src="https://via.placeholder.com/200x300" alt="Movie 6" onclick="location.href='movie.html'">
+            <button onclick="location.href='movie.html'">Movie Title 1</button>
+            <button onclick="location.href='movie.html'">Movie Title 2</button>
+            <button onclick="location.href='movie.html'">Movie Title 3</button>
+            <button onclick="location.href='movie.html'">Movie Title 4</button>
+            <button onclick="location.href='movie.html'">Movie Title 5</button>
+            <button onclick="location.href='movie.html'">Movie Title 6</button>
         </div>
     </div>
+    <script>
+        function executeSearch() {
+            var searchInput = document.getElementById('searchInput').value;
+            alert('Searching for: ' + searchInput);
+        }
+    </script>
 </body>
 </html>
 
