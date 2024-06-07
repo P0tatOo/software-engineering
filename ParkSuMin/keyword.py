@@ -56,7 +56,7 @@ def recommend_movies(user_id, keyword=None):
             recommended_movies = suitable_movies.iloc[top_indices]
             return recommended_movies
         else:
-            return "입력한 키워드에 해당하는 영화가 없습니다."  # 수정된 부분
+            return "입력한 키워드에 해당하는 영화가 없습니다." 
 
     # 시나리오 2: Likelist가 존재하고 키워드도 있는 경우
     elif user_likelist and keyword:
@@ -88,12 +88,12 @@ def recommend_movies(user_id, keyword=None):
             recommended_movies = suitable_movies.iloc[top_indices]
             return recommended_movies
         else:
-            return "입력한 키워드에 해당하는 영화가 없습니다."  # 수정된 부분
+            return "입력한 키워드에 해당하는 영화가 없습니다." 
         
     # 시나리오 3: Likelist가 비어있고 키워드도 없는 경우
     elif not user_likelist and not keyword:
         # 나이에 맞게 10개 영화 추천
-        return suitable_movies.head(10)  # 수정된 부분
+        return suitable_movies.head(10) 
 
     # 시나리오 4: Likelist가 존재하고 키워드도 없는 경우
     else:
