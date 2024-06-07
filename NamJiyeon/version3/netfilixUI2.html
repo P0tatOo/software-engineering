@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix UI</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #141414;
+            color: #ffffff;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #141414;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e50914;
+        }
+        .navbar .menu {
+            display: flex;
+            gap: 20px;
+        }
+        .navbar .menu a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .navbar .search {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+        .navbar .search input[type="text"] {
+            padding: 5px;
+            font-size: 16px;
+            border: none;
+            border-radius: 3px;
+        }
+        .section {
+            padding: 80px 20px 20px 20px;
+        }
+        .section h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .carousel {
+            display: flex;
+            gap: 10px;
+        }
+        .carousel .movie-item {
+            width: 200px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #333;
+            color: #fff;
+            font-size: 18px;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">NETFLIX</div>
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="#">TV Shows</a>
+            <a href="#">Movies</a>
+            <a href="#">Latest</a>
+            <a href="#">My List</a>
+        </div>
+        <div class="search">
+            <input type="text" placeholder="Search">
+        </div>
+    </div>
+    <div class="section">
+        <h2>For you</h2>
+        <div class="carousel">
+            <button class="movie-item" onclick="location.href='movie.html'">Movie Title 1</button>
+            <button class="movie-item" onclick="location.href='movie.html'">Movie Title 2</button>
+            <button class="movie-item" onclick="location.href='movie.html'">Movie Title 3</button>
+            <button class="movie-item" onclick="location.href='movie.html'">Movie Title 4</button>
+            <button class="movie-item" onclick="location.href='movie.html'">Movie Title 5</button>
+            <button class="movie-item" onclick="location.href='movie.html'">Movie Title 6</button>
+        </div>
+    </div>
+</body>
+</html>
