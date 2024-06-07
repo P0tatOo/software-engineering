@@ -49,13 +49,6 @@
         .movie-details {
             padding: 80px 20px 20px 20px;
         }
-        .movie-details img {
-            width: 100%;
-            max-width: 400px;
-            height: auto;
-            display: block;
-            margin-bottom: 20px;
-        }
         .movie-details h1 {
             margin-bottom: 20px;
             font-size: 36px;
@@ -68,14 +61,20 @@
             display: flex;
             gap: 10px;
         }
-        .buttons button {
-            padding: 10px 20px;
-            font-size: 16px;
-            color: #ffffff;
-            background-color: #e50914;
+        .heart-button {
+            background: #000;
             border: none;
             cursor: pointer;
-            border-radius: 3px;
+            padding: 10px;
+            border-radius: 50%;
+        }
+        .heart-button svg {
+            width: 24px;
+            height: 24px;
+            fill: #ffffff;
+        }
+        .heart-button.active svg {
+            fill: #e50914;
         }
     </style>
 </head>
@@ -94,13 +93,19 @@
         </div>
     </div>
     <div class="movie-details">
-        <img src="https://via.placeholder.com/400x600" alt="Movie Poster">
         <h1>Movie Title</h1>
-        <p> 여기에 줄거리 넣으면 됨 !!! </p>
+        <p> 줄거리 내용</p>
         <div class="buttons">
-            <button onclick="alert('You liked this movie!')">좋아요</button>
-            <button onclick="alert('Plot saved!')">줄거리 저장</button>
+            <button class="heart-button" id="likeButton">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+            </button>
         </div>
     </div>
-</body>
-</html>
+
+    <script>
+        document.getElementById('likeButton').addEventListener('click', function() {
+            this.classList.toggle('active');
+        });
+    </script>
