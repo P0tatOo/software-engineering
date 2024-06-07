@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 및 회원가입</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000; /* 검은색 배경 */
+            margin: 0;
+            padding: 0;
+            color: #ffffff; /* 흰색 글씨 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        #title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff0000; /* 빨간색 글씨 */
+            margin: 20px auto; /* 위, 아래 여백 추가 */
+            text-align: center; /* 텍스트 중앙 정렬 */
+        }
+        form {
+            background-color: #666666; /* 회색 입력 폼 */
+            padding: 40px; /* 크기 조정 */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px; /* 폼 너비 지정 */
+            margin: 20px auto; /* 수평 중앙 정렬 */
+        }
+        h2 {
+            text-align: left; /* 로그인 제목을 왼쪽 정렬로 변경 */
+            margin-bottom: 20px; /* 로그인 제목과 입력 칸 사이 여백 조정 */
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="number"] {
+            width: calc(100% - 20px); /* 칸의 너비를 조정 */
+            padding: 10px;
+            margin-bottom: 20px; /* 여백을 넉넉하게 조정 */
+            border: 0.5px solid #cccccc; /* 회색 테두리 */
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #666666; /* 입력 칸 배경색 회색 */
+        }
+        input[type="submit"] {
+            width: calc(100% - 20px); /* 버튼의 너비를 조정 */
+            padding: 10px;
+            border: none; /* 로그인 버튼의 테두리 없음 */
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #ff0000; /* 빨간색 버튼 */
+            color: #fff;
+            cursor: pointer;
+        }
+        p {
+            margin: 0; /* 단락의 기본 마진 제거 */
+            margin-top: 20px; /* 상단 여백 추가 */
+        }
+    </style>
+</head>
+<body>
+    <div id="title">
+        NETFLIX 줄거리 검색 서비스
+    </div>
+    <form id="loginForm">
+        <h2>로그인</h2> <!-- 제목의 마진 조정 -->
+        <input type="text" id="loginUsername" name="username" placeholder="아이디" required>
+        <input type="password" id="loginPassword" name="password" placeholder="비밀번호" required>
+        <input type="submit" value="로그인">
+        <p>아직 회원이 아니신가요? <a href="#" class="toggleForm" style="color: #ffffff;">회원가입</a></p>
+    </form>
+
+    <form id="signupForm" style="display: none;">
+        <h2>회원가입</h2> <!-- 제목의 마진 조정 -->
+        <input type="text" id="signupUsername" name="username" placeholder="아이디" required>
+        <input type="number" id="age" name="age" placeholder="나이" min="1" required>
+        <input type="password" id="signupPassword" name="password" placeholder="비밀번호" required>
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="비밀번호 확인" required>
+        <input type="submit" value="가입">
+        <p>이미 회원이신가요? <a href="#" class="toggleForm" style="color: #ffffff;">로그인</a></p>
+    </form>
+
+    <script>
+        document.querySelectorAll(".toggleForm").forEach(function(el) {
+            el.addEventListener("click", function(event) {
+                event.preventDefault();
+                var loginForm = document.getElementById("loginForm");
+                var signupForm = document.getElementById("signupForm");
+
+                if (loginForm.style.display === "none") {
+                    loginForm.style.display = "block";
+                    signupForm.style.display = "none";
+                } else {
+                    loginForm.style.display = "none";
+                    signupForm.style.display = "block";
+                }
+            });
+        });
+
+        document.getElementById("signupForm").addEventListener("submit", function(event) {
+            var ageInput = document.getElementById("age");
+            if (ageInput.value < 1) {
+                event.preventDefault();
+                alert("나이는 1 이상의 양수여야 합니다.");
+            }
+            if (ageInput.value > 999){
+                event.preventDefault();
+                alert("나이 값을 확인해주세요.");
+            }
+        });
+    </script>
+</body>
+</html>
