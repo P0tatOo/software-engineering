@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NETFLIX 줄거리 검색 서비스</title>
+    <style>
+      body {
+        background-color: #141414;
+        color: #ffffff;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .title {
+        margin-top: 20px;
+        text-align: center;
+      }
+      .search-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px;
+      }
+      .search-box input[type="text"] {
+        padding: 10px;
+        width: 300px;
+        border-radius: 5px;
+        border: none;
+      }
+      .search-box input[type="submit"] {
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        background-color: #e50914;
+        color: #fff;
+        cursor: pointer;
+        margin-left: 10px;
+      }
+      .my-list-btn {
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        background-color: #e50914;
+        color: #fff;
+        cursor: pointer;
+        margin-left: 10px;
+      }
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 20px;
+        width: 100%;
+      }
+      .movie {
+        background-color: #333;
+        border-radius: 5px;
+        margin: 10px;
+        padding: 10px;
+        width: 200px;
+        text-align: center;
+        cursor: pointer;
+      }
+      .liked-movie {
+        background-color: #fff;
+        color: #000;
+      }
+      .movie img {
+        max-width: 100%;
+        border-radius: 5px;
+      }
+      .movie h2,
+      .movie p {
+        color: #ffffff;
+      }
+      .liked-movie h2,
+      .liked-movie p {
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="title">NETFLIX 줄거리 검색 서비스</h1>
+    <div class="search-box">
+      <form method="post" action="/">
+        <input type="text" name="keyword" placeholder="영화 키워드 입력" />
+        <input type="submit" value="검색" />
+      </form>
+      <button class="my-list-btn" onclick="location.href='/my_list'">
+        My List
+      </button>
+    </div>
+    <div class="container">
+      {% for _, movie in recommendations.iterrows() %}
+      <div
+        class="movie {% if movie['title'] in user_likelist %}liked-movie{% endif %}"
+        onclick="location.href='{{ url_for('movie', title=movie['title']) }}'"
+      >
+        <h2>{{ movie['title'] }}</h2>
+        <p>{{ movie['description'] }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>
