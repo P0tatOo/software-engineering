@@ -30,20 +30,34 @@
         .navbar .menu {
             display: flex;
             gap: 20px;
+            align-items: center;
         }
         .navbar .menu a {
             color: #ffffff;
             text-decoration: none;
         }
         .navbar .search {
-            margin-left: auto;
             display: flex;
             align-items: center;
+            position: relative;
         }
         .navbar .search input[type="text"] {
-            padding: 5px;
+            padding: 5px 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            background-color: #000;
+            color: #fff;
+            width: 200px;
+            margin-right: 5px;
+        }
+        .navbar .search button {
+            padding: 5px 10px;
             font-size: 16px;
             border: none;
+            background-color: #e50914;
+            color: #fff;
+            cursor: pointer;
             border-radius: 3px;
         }
         .movie-details {
@@ -87,9 +101,10 @@
             <a href="#">Movies</a>
             <a href="#">Latest</a>
             <a href="#">My List</a>
-        </div>
-        <div class="search">
-            <input type="text" placeholder="Search">
+            <div class="search">
+                <input type="text" id="searchInput" placeholder="Search">
+                <button onclick="executeSearch()">Search</button>
+            </div>
         </div>
     </div>
     <div class="movie-details">
@@ -105,7 +120,14 @@
     </div>
 
     <script>
+        function executeSearch() {
+            var searchInput = document.getElementById('searchInput').value;
+            alert('Searching for: ' + searchInput);
+        }
+
         document.getElementById('likeButton').addEventListener('click', function() {
             this.classList.toggle('active');
         });
     </script>
+</body>
+</html>
