@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session, abort
+from flask import Flask, render_template, request, redirect, session
 import sqlite3 as db
 
 app = Flask(__name__)
@@ -31,12 +31,17 @@ def register(id: str, pw: str, confirm_pw: str, age: int):
     try:
         conn = get_db_connection()
         c = conn.cursor()
+        c.execute('SELECT id FROM user WHERE id = ?', (id,))
+        if c.fetchone():
+            conn.close()
+            return False, "이미 사용 중인 아이디입니다."
+        
         c.execute('INSERT INTO user (id, pw, age) VALUES (?, ?, ?)', (id, pw, age))
         conn.commit()
         conn.close()
         return True, "회원가입 성공"
-    except db.IntegrityError:
-        return False, "이미 사용 중인 아이디입니다."
+    except db.Error as e:
+        return False, f"데이터베이스 오류: {str(e)}"
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
