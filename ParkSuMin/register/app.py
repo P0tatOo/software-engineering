@@ -66,7 +66,7 @@ def index():
             success, message = register(username, password, confirm_password, age)
             if success:
                 session['username'] = username
-                return redirect('/welcome')
+                return redirect('/')
             else:
                 signup_error = message
                 return render_template('index.html', login_error=login_error, signup_error=signup_error, show_signup_form=True)
